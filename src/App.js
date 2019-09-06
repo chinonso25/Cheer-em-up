@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import HeaderBar from "./components/HeaderBar";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import * as firebase from "firebase";
+
 
 function App() {
+  useEffect(() => {
+    // Update the document title using the browser API
+   firebase.database()
+
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <HeaderBar />
+    </Router>
   );
 }
 
