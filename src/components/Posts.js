@@ -46,10 +46,10 @@ function Posts() {
           id: snapshot.key,
           title: snapshot.val().PrayerRequest,
           date: snapshot.val().date,
-          likes: snapshot.numChildren()-2
+          likes: snapshot.numChildren() - 2
         };
-        
-        console.log(PRequest.likes)
+
+        console.log(PRequest.likes);
         let PrayerRequests = Prayers;
         PrayerRequests.push(PRequest);
 
@@ -70,7 +70,6 @@ function Posts() {
   };
 
   const Like = x => {
-
     firebase
       .database()
       .ref(`/Requests/${x}`)
@@ -81,14 +80,10 @@ function Posts() {
     var ref = firebase.database().ref(`/Requests/${x}`);
     ref.once("value").then(function(snapshot) {
       var a = snapshot.numChildren(); // 1 ("name")
-      console.log(a-2);
-      SetLikes(a-2);
-    
+      console.log(a - 2);
+      SetLikes(a - 2);
     });
-
   };
-
-  
 
   if (!Prayers) {
     return <div />;
@@ -103,8 +98,13 @@ function Posts() {
                 <h5>Posted on {Request.date}</h5>
                 <h1>{Request.title}</h1>
                 <Row style={divStyle.BottomRow}>
-                  <Button onClick={() => {Like(Request.id)}} variant="outline-success">
-                    Amen 🙏  {Request.likes}
+                  <Button
+                    onClick={() => {
+                      Like(Request.id);
+                    }}
+                    variant="outline-success"
+                  >
+                    Amen 🙏 {Request.likes}
                   </Button>
                   <Button variant="link">
                     <Link
