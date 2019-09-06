@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import About from "../pages/About";
 import Home from "../pages/Home";
+import Prayer from "../pages/Prayer";
 
 import {
   Navbar,
@@ -15,7 +16,6 @@ import {
 
 function HeaderBar() {
   return (
-    <Router>
       <Navbar bg="light" expand="lg">
         <Navbar.Brand ><Link to="/">Prayer Support</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -30,9 +30,7 @@ function HeaderBar() {
         </Navbar.Collapse>
       </Navbar>
 
-      <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-    </Router>
+      
   );
 }
 
