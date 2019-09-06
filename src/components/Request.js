@@ -9,6 +9,7 @@ import {
   FormControl,
   Button
 } from "react-bootstrap";
+import Posts from "./Posts.js";
 var rug = require("random-username-generator");
 
 function Request() {
@@ -19,8 +20,7 @@ function Request() {
     // Update the document title using the browser API
     var new_username = rug.generate();
     console.log(new_username);
-     firebase.database();
-
+    firebase.database();
   });
 
   const onChangeHandler = evt => {
@@ -36,12 +36,15 @@ function Request() {
         .database()
         .ref(`Requests/`)
         .push({
-          PrayerRequest: request,
+          PrayerRequest: request
           ///date: moment().format("MMMM Do YYYY")
         });
-        setrequest("")
+      setrequest("");
+      setwordSize(0);
     }
-  }
+  };
+
+  
 
   return (
     <div className="App">
@@ -56,7 +59,9 @@ function Request() {
               onChange={evt => onChangeHandler(evt)}
             />
             <InputGroup.Prepend>
-              <Button onClick={createNote} variant="primary">Send</Button>
+              <Button onClick={createNote} variant="primary">
+                Send
+              </Button>
             </InputGroup.Prepend>
           </InputGroup>
           <p>No hate speech will be tolerated.</p>
@@ -64,6 +69,8 @@ function Request() {
           <h5>{wordSize}/250</h5>
         </Container>
       </Jumbotron>
+
+      <Posts  />
     </div>
   );
 }
