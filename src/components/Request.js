@@ -8,7 +8,9 @@ import {
   Container,
   InputGroup,
   FormControl,
-  Button
+  Button,
+  Row,
+  Col
 } from "react-bootstrap";
 import Posts from "./Posts.js";
 var rug = require("random-username-generator");
@@ -66,23 +68,26 @@ function Request() {
         <Jumbotron fluid style={divStyle.Picture}>
           <Container>
             <h1>Send your Request</h1>
-
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Prayer Request..."
-                aria-describedby="basic-addon2"
-                as="textarea"
-                aria-label="With textarea"
-                value={request}
-                onChange={evt => onChangeHandler(evt)}
-                maxLength={256}
-              />
-              <InputGroup.Append>
-                <Button onClick={createNote} variant="primary">
-                  Send
-                </Button>
-              </InputGroup.Append>
-            </InputGroup>
+            <Row className="justify-content-md-center">
+              <Col sm>
+                <InputGroup className="mb-3">
+                  <FormControl
+                    placeholder="Prayer Request..."
+                    aria-describedby="basic-addon2"
+                    as="textarea"
+                    aria-label="With textarea"
+                    value={request}
+                    onChange={evt => onChangeHandler(evt)}
+                    maxLength={256}
+                  />
+                  <InputGroup.Append>
+                    <Button onClick={createNote} variant="primary">
+                      Send
+                    </Button>
+                  </InputGroup.Append>
+                </InputGroup>
+              </Col>
+            </Row>
             <p>No hate speech will be tolerated.</p>
 
             <h5>{wordSize}/256</h5>

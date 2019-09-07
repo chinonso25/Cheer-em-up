@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Prayer from "./pages/Prayer";
 
 import HeaderBar from "./components/HeaderBar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
 import * as firebase from "firebase";
 
 function App() {
@@ -19,7 +19,10 @@ function App() {
       <HeaderBar />
       <Route path="/" exact component={Home} />
       <Route path="/about" component={About} />
-  <Route path={`/Requests/`} render={() => <Prayer />} />
+      <Route
+        path="/Requests/:Post"
+        render={(props) => <Prayer text="Hello, " {...props} Post={props.match.params.Post} />}
+      />
     </Router>
   );
 }

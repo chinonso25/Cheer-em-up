@@ -27,7 +27,7 @@ const divStyle = {
   }
 };
 
-function Posts() {
+function Posts(props) {
   const [Prayers, setPrayers] = useState([]);
   const [Likes, SetLikes] = useState(0);
 
@@ -36,7 +36,7 @@ function Posts() {
     listenforChange();
   }, []);
 
-  const listenforChange = () => {
+  async function listenforChange() {
     let Prayers = [];
     firebase
       .database()
@@ -46,7 +46,7 @@ function Posts() {
           id: snapshot.key,
           title: snapshot.val().PrayerRequest,
           date: snapshot.val().date,
-          likes: snapshot.numChildren() - 2
+          likes: snapshot.child("Likes").numChildren()
         };
 
         console.log(PRequest.likes);
@@ -54,8 +54,9 @@ function Posts() {
         PrayerRequests.push(PRequest);
 
         setPrayers(PrayerRequests);
-        console.log(Prayers);
       });
+
+    console.log(Prayers);
 
     firebase
       .database()
@@ -67,21 +68,21 @@ function Posts() {
         );
         setPrayers(PrayerRequests);
       });
-  };
+  }
 
   const Like = x => {
     firebase
       .database()
-      .ref(`/Requests/${x}`)
+      .ref(`/Requests/${x}/Likes`)
       .push({
         Like: true
       });
 
-    var ref = firebase.database().ref(`/Requests/${x}`);
+    var ref = firebase.database().ref(`/Requests/${x}/Likes`);
     ref.once("value").then(function(snapshot) {
       var a = snapshot.numChildren(); // 1 ("name")
       console.log(a - 2);
-      SetLikes(a - 2);
+      listenforChange();
     });
   };
 
@@ -107,16 +108,7 @@ function Posts() {
                     Amen 🙏 {Request.likes}
                   </Button>
                   <Button variant="link">
-                    <Link
-                      to={{
-                        pathname: `/Requests/${Request.id}`,
-                        state: {
-                          Request: Request
-                        }
-                      }}
-                    >
-                      Comments
-                    </Link>
+                    <Link to={`/Requests/${Request.id}`}>Comments</Link>
                   </Button>
                 </Row>
                 <Divider width="100%" />
