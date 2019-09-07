@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as firebase from "firebase";
 import firebaseConfig from "../index.js";
-import HeaderBar from "../components/HeaderBar";
+import Typography from "typography";
 
 import {
   Jumbotron,
@@ -23,7 +23,8 @@ const divStyle = {
   Picture: {
     width: "100%",
     backgroundImage: `url(${imgMyimageexample})`,
-    backgroundSize: "cover"
+    backgroundSize: "cover",
+    marginBottom: "8vh"
   },
   Text: {
     paddingBottom: 20,
@@ -31,6 +32,21 @@ const divStyle = {
     color: "#90a4ae"
   }
 };
+
+const typography = new Typography({
+  baseFontSize: "18px",
+  baseLineHeight: 1.666,
+  headerFontFamily: [
+    "Avenir Next",
+    "Helvetica Neue",
+    "Segoe UI",
+    "Helvetica",
+    "Arial",
+    "sans-serif"
+  ],
+  bodyFontFamily: ["Georgia", "serif"]
+  // See below for the full list of options.
+});
 
 function Request() {
   const [request, setrequest] = useState("");
@@ -67,7 +83,7 @@ function Request() {
       <div>
         <Jumbotron fluid style={divStyle.Picture}>
           <Container>
-            <h1>Send your Request</h1>
+            <h1 typography={typography}>Send your Request</h1>
             <Row className="justify-content-md-center">
               <Col sm>
                 <InputGroup className="mb-3">
@@ -80,12 +96,12 @@ function Request() {
                     onChange={evt => onChangeHandler(evt)}
                     maxLength={256}
                   />
-                  <InputGroup.Append>
-                    <Button onClick={createNote} variant="primary">
-                      Send
-                    </Button>
-                  </InputGroup.Append>
                 </InputGroup>
+                <Col>
+                  <Button onClick={createNote} variant="primary">
+                    Send
+                  </Button>
+                </Col>
               </Col>
             </Row>
             <p>No hate speech will be tolerated.</p>

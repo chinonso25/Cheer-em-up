@@ -13,24 +13,23 @@ import {
   Button
 } from "react-bootstrap";
 
-
 function HeaderBar() {
   return (
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand ><Link to="/">Prayer Support</Link></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto"></Nav>
-          <Nav.Link>
-            <Link to="/">Home</Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/about">About</Link>
-          </Nav.Link>
-        </Navbar.Collapse>
-      </Navbar>
-
-      
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand>
+        <Link to="/">Prayer Support</Link>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto"></Nav>
+        <Nav.Link>
+          <Link to="/">Home</Link>
+        </Nav.Link>
+        <Nav.Link>
+          <Link to="/about">About</Link>
+        </Nav.Link>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 

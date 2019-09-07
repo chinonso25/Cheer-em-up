@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import HeaderBar from "../components/HeaderBar";
 import * as firebase from "firebase";
 
-import Request from "../components/Request";
+import CommentBox from "../components/CommentBox";
+import Comments from "../components/Comments";
+
 import "./About.css";
 import {
   Jumbotron,
@@ -44,16 +46,15 @@ function Prayer(props) {
   console.log(Post);
 
   useEffect(() => {
+    firebase.database();
     // Update the document title using the browser API
     listenforChange();
-  });
+  }, []);
 
   const listenforChange = () => {
-    let Prayers = [];
     firebase
       .database()
       .ref(`Requests`)
-      .orderByChild("id")
       .equalTo(Post)
       .on("child_added", snapshot => {
         let PRequest = {
@@ -64,27 +65,40 @@ function Prayer(props) {
         };
 
         console.log(PRequest);
-        let PrayerRequests = Prayers;
+        let PrayerRequests = [];
         PrayerRequests.push(PRequest);
 
         setPrayers(PrayerRequests);
       });
 
-    console.log(Prayers);
+    firebase
+      .database()
+      .ref(`/Requests/${Post}`)
+      .once("value")
+      .then(function(snapshot) {
+        let PRequest = {
+          id: snapshot.key,
+          title: snapshot.val().PrayerRequest,
+          date: snapshot.val().date,
+          likes: snapshot.child("Likes").numChildren()
+        };
+        console.log(PRequest);
+
+        setPrayers(PRequest);
+        console.log(Prayers);
+      });
   };
 
   return (
     <div className="Jumbotron">
       <Jumbotron fluid style={divStyle.Picture}>
         <Container style={divStyle.Text}>
-          <h1 style={divStyle.Text}>{Request}</h1>
-          <h2>What's this all about? {Post}</h2>
+          <h5>Posted on {Prayers.date}</h5>
+          <h2>{Prayers.title}</h2>
         </Container>
       </Jumbotron>
-
-      <Container>
-        <p>Loool</p>
-      </Container>
+      <Comments x={Prayers.id} />
+      <CommentBox x={Prayers.id} />
     </div>
   );
 }

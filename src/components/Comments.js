@@ -27,7 +27,7 @@ const divStyle = {
   }
 };
 
-function Posts(props) {
+function Comments(props) {
   const [Prayers, setPrayers] = useState([]);
   const [Likes, SetLikes] = useState(0);
 
@@ -35,30 +35,27 @@ function Posts(props) {
     firebase.database();
     // Update the document title using the browser API
     listenforChange();
+    console.log(Prayers);
+    console.log(props);
   }, []);
 
-  const listenforChange = () => {
+  function listenforChange() {
     let Prayers = [];
     firebase
       .database()
-      .ref(`Requests`)
+      .ref(`Requests/${props.x}/Comment`)
       .on("child_added", snapshot => {
         let PRequest = {
           id: snapshot.key,
-          title: snapshot.val().PrayerRequest,
-          date: snapshot.val().date,
-          likes: snapshot.child("Likes").numChildren(),
-          comments: snapshot.child("Comment").numChildren()
+          title: snapshot.val().Comments
         };
 
-        console.log(PRequest.likes);
+        console.log(PRequest.title);
         let PrayerRequests = Prayers;
         PrayerRequests.push(PRequest);
 
         setPrayers(PrayerRequests);
       });
-
-    console.log(Prayers);
 
     firebase
       .database()
@@ -70,23 +67,7 @@ function Posts(props) {
         );
         setPrayers(PrayerRequests);
       });
-  };
-
-  const Like = x => {
-    firebase
-      .database()
-      .ref(`/Requests/${x}/Likes`)
-      .push({
-        Like: true
-      });
-
-    var ref = firebase.database().ref(`/Requests/${x}/Likes`);
-    ref.once("value").then(function(snapshot) {
-      var a = snapshot.numChildren(); // 1 ("name")
-      console.log(a - 2);
-      listenforChange();
-    });
-  };
+  }
 
   if (!Prayers) {
     return <div />;
@@ -98,23 +79,8 @@ function Posts(props) {
           <Col>
             {Prayers.map(Request => (
               <div className="note" key={Request.id}>
-                <h5>Posted on {Request.date}</h5>
                 <h1>{Request.title}</h1>
-                <Row style={divStyle.BottomRow}>
-                  <Button
-                    onClick={() => {
-                      Like(Request.id);
-                    }}
-                    variant="outline-success"
-                  >
-                    Amen 🙏 {Request.likes}
-                  </Button>
-                  <Button variant="link">
-                    <Link to={`/Requests/${Request.id}`}>
-                      {Request.comments} Comments
-                    </Link>
-                  </Button>
-                </Row>
+                <Row style={divStyle.BottomRow}></Row>
                 <Divider width="100%" />
               </div>
             ))}
@@ -125,4 +91,4 @@ function Posts(props) {
   );
 }
 
-export default Posts;
+export default Comments;
