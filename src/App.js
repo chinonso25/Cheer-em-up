@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Prayer from "./pages/Prayer";
 
 import HeaderBar from "./components/HeaderBar";
+import Footer from "./components/Footer";
+
 import {
   BrowserRouter as Router,
-  Route,
-  Switch,
-  withRouter
+  Route
 } from "react-router-dom";
 import * as firebase from "firebase";
 
@@ -20,7 +19,8 @@ function App() {
     firebase.database();
   });
   return (
-    <Router>
+    <Router >
+      <div >
       <HeaderBar />
       <Route path="/" exact component={Home} />
       <Route path="/about" component={About} />
@@ -30,6 +30,8 @@ function App() {
           <Prayer text="Hello, " {...props} Post={props.match.params.Post} />
         )}
       />
+      <Footer />
+      </div>
     </Router>
   );
 }

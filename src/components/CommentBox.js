@@ -61,7 +61,6 @@ function CommentBox(props) {
   return (
     <>
       <Container>
-        <Divider />
         <Row className="justify-content-md-center">
           <InputGroup style={divStyle.Box}>
             <InputGroup.Prepend></InputGroup.Prepend>
@@ -70,11 +69,12 @@ function CommentBox(props) {
               aria-label="With textarea"
               value={Message}
               onChange={evt => onChangeHandler(evt)}
-              placeholder="Comment"
+              rows="3"
+              maxLength={256}
             />
           </InputGroup>
           <Button onClick={comment} variant="info">
-            Submit
+            Send
           </Button>
         </Row>
       </Container>

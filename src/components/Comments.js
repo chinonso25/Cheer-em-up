@@ -6,6 +6,7 @@ import Prayer from "../pages/Prayer";
 
 import Divider from "../components/Divider";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Bounce } from "react-activity";
 
 const imgMyimageexample = require("../img/Prayer.jpg");
 
@@ -24,6 +25,11 @@ const divStyle = {
     display: "flex",
     justifyContent: "space-between",
     padding: 10
+  },
+  Dots: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center"
   }
 };
 
@@ -51,8 +57,25 @@ function Comments(props) {
       });
   }
 
-  if (!Comments) {
-    return <div />;
+  if (Comments === undefined || Comments.length == 0) {
+    return (
+      <>
+        <Container style={divStyle.Dots}>
+          <Row className="justify-content-md-center" style={divStyle.Dots}>
+            <Col>
+              <h2>No Comments</h2>
+            </Col>
+          </Row>
+        </Container>
+        <Container style={divStyle.Dots}>
+          <Row className="justify-content-md-center" style={divStyle.Dots}>
+            <Col>
+              <Bounce style={divStyle.Dots} />
+            </Col>
+          </Row>
+        </Container>
+      </>
+    );
   }
   return (
     <div>

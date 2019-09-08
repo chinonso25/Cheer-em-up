@@ -1,17 +1,6 @@
 import React from "react";
-import HeaderBar from "../components/HeaderBar";
-import Request from "../components/Request";
-import "./About.css";
-import {
-  Jumbotron,
-  Container,
-  InputGroup,
-  FormControl,
-  Button,
-  Navbar,
-  Nav,
-  NavDropdown
-} from "react-bootstrap";
+
+import { Jumbotron, Container } from "react-bootstrap";
 
 const imgMyimageexample = require("../img/Prayer.jpg");
 const divStyle = {
@@ -39,7 +28,7 @@ function About() {
 
       <Container>
         <p>
-          Quotia definition the best kind of gossip, typically shared between
+          <h2><b>Quotia</b> - <p>definition</p></h2>  the best kind of gossip, typically shared between
           friends. it’s a bonding tool for people of all ages. tea is usually
           about someone you know, but can also extend to celebrities random
           internet scandals, etc. ugh I’ve missed so much what’s the tea sis? I

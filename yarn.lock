@@ -10044,6 +10044,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-oxygen@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-oxygen/-/typeface-oxygen-0.0.72.tgz#7c3a187b45bb112ca53d2953ba10018af1eb270f"
+  integrity sha512-wDLMaWKrq/P6Y3dDfrgy8JEQXfminKhzkXeQsN5XeOo9TWMJIhetAggqZLM1H7/hkzy/j329c8imScgXefjudg==
+
 typography-normalize@^0.16.19:
   version "0.16.19"
   resolved "https://registry.yarnpkg.com/typography-normalize/-/typography-normalize-0.16.19.tgz#58e0cf12466870c5b27006daa051fe7307780660"

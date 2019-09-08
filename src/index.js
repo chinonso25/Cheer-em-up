@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import * as firebase from "firebase";
+import 'typeface-oxygen'
+
 require("firebase/auth");
 
 const firebaseConfig = firebase.initializeApp({

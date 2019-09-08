@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as firebase from "firebase";
-import firebaseConfig from "../index.js";
-import Typography from "typography";
-import HeaderBar from "../components/HeaderBar";
-
 import {
   Jumbotron,
   Container,
@@ -13,7 +9,6 @@ import {
   Row,
   Col
 } from "react-bootstrap";
-import Posts from "./Posts.js";
 var rug = require("random-username-generator");
 
 var moment = require("moment");
@@ -34,7 +29,11 @@ const divStyle = {
     textAlign: "center",
     color: "#90a4ae"
   },
-  Request: { textAlign: "center", color: "white" }
+  Request: {
+    textAlign: "center",
+    color: "white",
+    marginBottom: 30
+  }
 };
 
 function Request() {
@@ -71,23 +70,23 @@ function Request() {
     <div className="App">
       <Jumbotron fluid style={divStyle.Picture}>
         <Container>
-          <h1 style={divStyle.Request}>Post Your Personal Quote</h1>
+          <h1 style={divStyle.Request}>Post Your Quote</h1>
           <Row className="justify-content-md-center">
             <Col sm>
               <InputGroup className="mb-3">
                 <FormControl
-                  placeholder="Enter Your Quote..."
                   aria-describedby="basic-addon2"
                   as="textarea"
                   aria-label="With textarea"
                   value={request}
                   onChange={evt => onChangeHandler(evt)}
                   maxLength={256}
+                  rows="4"
                 />
               </InputGroup>
               <Col>
-                <Button onClick={createNote} variant="primary">
-                  Send
+                <Button onClick={createNote} variant="secondary">
+                  Submit
                 </Button>
               </Col>
             </Col>

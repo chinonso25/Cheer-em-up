@@ -1,17 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import About from "../pages/About";
-import Home from "../pages/Home";
-import Prayer from "../pages/Prayer";
+import { Link } from "react-router-dom";
 
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button
-} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 const divStyle = {
   Text: {

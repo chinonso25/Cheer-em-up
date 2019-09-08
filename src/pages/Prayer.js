@@ -93,16 +93,16 @@ function Prayer(props) {
   };
 
   return (
-    <div className="Jumbotron">
+    <>
       <Jumbotron fluid style={divStyle.Picture}>
         <Container style={divStyle.Text}>
           <h5>Posted on {Prayers.date}</h5>
-          <h1 style={divStyle.Quote}>{Prayers.title}</h1>
+          <h1 style={divStyle.Quote}>"{Prayers.title}"</h1>
         </Container>
       </Jumbotron>
       <Comments x={Prayers.id} />
       <CommentBox x={Prayers.id} />
-    </div>
+    </>
   );
 }
 
