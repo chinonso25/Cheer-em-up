@@ -1,0 +1,13 @@
+#containerIntro h1,
+#containerIntro p {
+    display: inline;
+    font-family: 'Oxygen';
+    line-height: 28px;
+    
+    
+}
+
+#containerIntro p{
+    font-weight: 100
+}
+

@@ -21,7 +21,9 @@ function HeaderBar() {
     <Navbar bg="light" expand="lg">
       <Navbar.Brand>
         <Link to="/" style={divStyle.Text}>
-          Quotia
+          <h4>
+            <i>Cheer Me Up</i>
+          </h4>
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

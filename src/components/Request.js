@@ -33,6 +33,10 @@ const divStyle = {
     textAlign: "center",
     color: "white",
     marginBottom: 30
+  },
+  BottomRow: {
+    display: "flex",
+    justifyContent: "space-between"
   }
 };
 
@@ -67,10 +71,10 @@ function Request() {
   };
 
   return (
-    <div className="App">
+    <div>
       <Jumbotron fluid style={divStyle.Picture}>
         <Container>
-          <h1 style={divStyle.Request}>Post Your Quote</h1>
+          <h1 style={divStyle.Request}>Cheer Someone Up</h1>
           <Row className="justify-content-md-center">
             <Col sm>
               <InputGroup className="mb-3">
@@ -84,16 +88,17 @@ function Request() {
                   rows="4"
                 />
               </InputGroup>
-              <Col>
+              <div style={divStyle.BottomRow}>
+                <div>
+                  <p>No hate speech will be tolerated.</p>
+                  <h5>{wordSize}/256</h5>
+                </div>
                 <Button onClick={createNote} variant="secondary">
                   Submit
                 </Button>
-              </Col>
+              </div>
             </Col>
           </Row>
-          <p>No hate speech will be tolerated.</p>
-
-          <h5>{wordSize}/256</h5>
         </Container>
       </Jumbotron>
     </div>

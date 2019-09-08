@@ -29,7 +29,8 @@ const divStyle = {
   Dots: {
     alignItems: "center",
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    padding:10
   }
 };
 
@@ -61,7 +62,7 @@ function Comments(props) {
     return (
       <>
         <Container style={divStyle.Dots}>
-          <Row className="justify-content-md-center" style={divStyle.Dots}>
+          <Row className="justify-content-md-center" >
             <Col>
               <h2>No Comments</h2>
             </Col>
