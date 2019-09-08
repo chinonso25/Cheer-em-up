@@ -24,3 +24,13 @@
 [info] 
 [info] i  deploying database, functions, hosting
 [info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script.
+[info] i  database: checking rules syntax...
+[debug] [2019-09-08T02:11:29.324Z] >>> HTTP REQUEST PUT https://prayersupport-5107b.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
