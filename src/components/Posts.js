@@ -6,6 +6,8 @@ import Prayer from "../pages/Prayer";
 
 import Divider from "../components/Divider";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Dots } from "react-activity";
+import "react-activity/dist/react-activity.css";
 
 const imgMyimageexample = require("../img/Prayer.jpg");
 
@@ -59,19 +61,22 @@ function Posts(props) {
         Like: true
       });
 
-    var ref = firebase.database().ref(`/Requests/${x}/Likes`);
-    ref.once("value").then(function(snapshot) {
-      var a = snapshot.numChildren(); // 1 ("name")
-      console.log(a - 2);
-      listenforChange();
-    });
+    firebase
+      .database()
+      .ref(`/Requests/${x}/Likes`)
+      .once("value")
+      .then(function(snapshot) {
+        var a = snapshot.numChildren(); // 1 ("name")
+        console.log(a - 2);
+        listenforChange();
+      });
   };
 
   if (!Prayers) {
-    return <div />;
+    return <Dots />;
   }
   return (
-    <div>
+    <>
       <Container>
         <Row className="justify-content-md-center">
           <Col>
@@ -86,7 +91,7 @@ function Posts(props) {
                     }}
                     variant="outline-success"
                   >
-                    Amen 🙏 {Request.likes}
+                    Hmm... 🤔 {Request.likes}
                   </Button>
                   <Button variant="link">
                     <Link to={`/Requests/${Request.id}`}>
@@ -100,7 +105,7 @@ function Posts(props) {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 }
 

@@ -31,7 +31,7 @@ const divStyle = {
 
 function CommentBox(props) {
   const [Message, setMessage] = useState("");
-  const [username, setUsername] = useState('');
+  const [username, setUsername] = useState("");
   useEffect(() => {
     firebase.database();
     setUsername(rug.generate());
@@ -50,9 +50,8 @@ function CommentBox(props) {
         .ref(`Requests/${props.x}/Comment`)
         .push({
           Comments: Message,
-          Author:username,
-          Date: moment().format("MMMM Do YYYY"),
-
+          Author: username,
+          Date: moment().format("MMMM Do YYYY")
         });
       setMessage("");
       console.log(props.x);

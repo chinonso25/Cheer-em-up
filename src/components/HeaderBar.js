@@ -14,7 +14,6 @@ import {
 } from "react-bootstrap";
 
 const divStyle = {
-  
   Text: {
     paddingBottom: 20,
     textAlign: "center",
@@ -29,20 +28,24 @@ const divStyle = {
 
 function HeaderBar() {
   return (
-    <Navbar style={divStyle.Bar} expand="lg">
+    <Navbar bg="light" expand="lg">
       <Navbar.Brand>
         <Link to="/" style={divStyle.Text}>
-          Prayer Support
+          Quotia
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto"/>
+        <Nav className="mr-auto" />
         <Nav.Link>
-          <Link to="/" style={divStyle.Text}>Home</Link>
+          <Link to="/" style={divStyle.Text}>
+            Home
+          </Link>
         </Nav.Link>
         <Nav.Link>
-          <Link to="/about" style={divStyle.Text}>About</Link>
+          <Link to="/about" style={divStyle.Text}>
+            About
+          </Link>
         </Nav.Link>
       </Navbar.Collapse>
     </Navbar>

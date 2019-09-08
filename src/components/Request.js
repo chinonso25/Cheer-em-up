@@ -33,23 +33,9 @@ const divStyle = {
     paddingBottom: 20,
     textAlign: "center",
     color: "#90a4ae"
-  }
+  },
+  Request: { textAlign: "center", color: "white" }
 };
-
-const typography = new Typography({
-  baseFontSize: "18px",
-  baseLineHeight: 1.666,
-  headerFontFamily: [
-    "Avenir Next",
-    "Helvetica Neue",
-    "Segoe UI",
-    "Helvetica",
-    "Arial",
-    "sans-serif"
-  ],
-  bodyFontFamily: ["Georgia", "serif"]
-  // See below for the full list of options.
-});
 
 function Request() {
   const [request, setrequest] = useState("");
@@ -85,12 +71,12 @@ function Request() {
     <div className="App">
       <Jumbotron fluid style={divStyle.Picture}>
         <Container>
-          <h1 typography={typography}>Post Your Quote</h1>
+          <h1 style={divStyle.Request}>Post Your Personal Quote</h1>
           <Row className="justify-content-md-center">
             <Col sm>
               <InputGroup className="mb-3">
                 <FormControl
-                  placeholder="Prayer Request..."
+                  placeholder="Enter Your Quote..."
                   aria-describedby="basic-addon2"
                   as="textarea"
                   aria-label="With textarea"

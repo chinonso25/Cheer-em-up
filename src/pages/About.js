@@ -29,20 +29,17 @@ const divStyle = {
 
 function About() {
   return (
-    <div className="Jumbotron">
+    <>
       <Jumbotron fluid style={divStyle.Picture}>
         <Container style={divStyle.Text}>
-          <h1 style={divStyle.Text}>About</h1>
+          <h1 style={divStyle.Text}>Quotia</h1>
           <h2>What's this all about?</h2>
         </Container>
       </Jumbotron>
 
       <Container>
         <p>
-          Prayer definition 
-          
-          
-          the best kind of gossip, typically shared between
+          Quotia definition the best kind of gossip, typically shared between
           friends. it’s a bonding tool for people of all ages. tea is usually
           about someone you know, but can also extend to celebrities random
           internet scandals, etc. ugh I’ve missed so much what’s the tea sis? I
@@ -50,7 +47,7 @@ function About() {
           a couple?
         </p>
       </Container>
-    </div>
+    </>
   );
 }
 

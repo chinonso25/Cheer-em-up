@@ -28,6 +28,9 @@ const divStyle = {
     paddingBottom: 20,
     textAlign: "center",
     color: "#90a4ae"
+  },
+  Quote: {
+    color: "white"
   }
 };
 
@@ -94,7 +97,7 @@ function Prayer(props) {
       <Jumbotron fluid style={divStyle.Picture}>
         <Container style={divStyle.Text}>
           <h5>Posted on {Prayers.date}</h5>
-          <h2>{Prayers.title}</h2>
+          <h1 style={divStyle.Quote}>{Prayers.title}</h1>
         </Container>
       </Jumbotron>
       <Comments x={Prayers.id} />

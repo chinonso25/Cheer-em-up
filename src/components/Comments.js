@@ -28,36 +28,30 @@ const divStyle = {
 };
 
 function Comments(props) {
-  const [Prayers, setPrayers] = useState([]);
+  const [Comments, setComments] = useState([]);
   const [Likes, SetLikes] = useState(0);
 
   useEffect(() => {
-    firebase.database();
     // Update the document title using the browser API
     listenforChange();
-  }, []);
+  }, [props.x]);
 
   function listenforChange() {
-    let Yoo = [];
     firebase
       .database()
       .ref(`Requests/${props.x}/Comment`)
       .on("child_added", snapshot => {
         let PRequest = {
           id: snapshot.key,
-          title: snapshot.val().Comments
+          comment: snapshot.val().Comments,
+          author: snapshot.val().Author,
+          date: snapshot.val().Date
         };
-
-        let PrayerRequests = Yoo;
-        PrayerRequests.push(PRequest);
-
-        setPrayers(PrayerRequests);
+        setComments(Comments => [...Comments, PRequest]);
       });
-
-    
   }
 
-  if (!Prayers) {
+  if (!Comments) {
     return <div />;
   }
   return (
@@ -65,13 +59,20 @@ function Comments(props) {
       <Container>
         <Row className="justify-content-md-center">
           <Col>
-            {Prayers.map(Request => (
-              <div className="note" key={Request.id}>
-                <h1>{Request.title}</h1>
-                <Row style={divStyle.BottomRow}></Row>
-                <Divider width="100%" />
-              </div>
-            ))}
+            <Row>
+              <h2>Comments:</h2>
+            </Row>
+            {Comments.slice(0)
+              .reverse()
+              .map(Request => (
+                <div className="note" key={Request.id}>
+                  <h5>{Request.comment}</h5>
+                  <h6>
+                    Posted by {Request.author} on {Request.date}
+                  </h6>
+                  <Divider width="100%" />
+                </div>
+              ))}
           </Col>
         </Row>
       </Container>
