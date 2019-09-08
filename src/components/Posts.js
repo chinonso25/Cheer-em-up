@@ -32,13 +32,13 @@ function Posts(props) {
   const [Likes, SetLikes] = useState(0);
 
   useEffect(() => {
-    firebase.database();
-    // Update the document title using the browser API
     listenforChange();
+    //do stuff
+
+    // Update the document title using the browser API
   }, []);
 
-  const listenforChange = () => {
-    let Prayers = [];
+  function listenforChange() {
     firebase
       .database()
       .ref(`Requests`)
@@ -51,26 +51,13 @@ function Posts(props) {
           comments: snapshot.child("Comment").numChildren()
         };
 
-        console.log(PRequest.likes);
         let PrayerRequests = Prayers;
         PrayerRequests.push(PRequest);
+        console.log(Prayers);
 
-        setPrayers(PrayerRequests);
+        setPrayers(Prayers => [...Prayers, PRequest]);
       });
-
-    console.log(Prayers);
-
-    firebase
-      .database()
-      .ref(`Requests`)
-      .on("child_removed", snapshot => {
-        let PrayerRequests = Prayers;
-        PrayerRequests = PrayerRequests.filter(
-          note => note.id !== snapshot.key
-        );
-        setPrayers(PrayerRequests);
-      });
-  };
+  }
 
   const Like = x => {
     firebase
