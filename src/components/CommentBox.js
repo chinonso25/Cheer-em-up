@@ -13,6 +13,10 @@ import {
   Row
 } from "react-bootstrap";
 
+var rug = require("random-username-generator");
+
+var moment = require("moment");
+
 const divStyle = {
   Text: {
     paddingBottom: 20,
@@ -27,8 +31,10 @@ const divStyle = {
 
 function CommentBox(props) {
   const [Message, setMessage] = useState("");
+  const [username, setUsername] = useState('');
   useEffect(() => {
     firebase.database();
+    setUsername(rug.generate());
     // Update the document title using the browser API
   }, []);
 
@@ -43,7 +49,10 @@ function CommentBox(props) {
         .database()
         .ref(`Requests/${props.x}/Comment`)
         .push({
-          Comments: Message
+          Comments: Message,
+          Author:username,
+          Date: moment().format("MMMM Do YYYY"),
+
         });
       setMessage("");
       console.log(props.x);
@@ -62,6 +71,7 @@ function CommentBox(props) {
               aria-label="With textarea"
               value={Message}
               onChange={evt => onChangeHandler(evt)}
+              placeholder="Comment"
             />
           </InputGroup>
           <Button onClick={comment} variant="info">

@@ -35,12 +35,10 @@ function Comments(props) {
     firebase.database();
     // Update the document title using the browser API
     listenforChange();
-    console.log(Prayers);
-    console.log(props);
   }, []);
 
   function listenforChange() {
-    let Prayers = [];
+    let Yoo = [];
     firebase
       .database()
       .ref(`Requests/${props.x}/Comment`)
@@ -50,23 +48,13 @@ function Comments(props) {
           title: snapshot.val().Comments
         };
 
-        console.log(PRequest.title);
-        let PrayerRequests = Prayers;
+        let PrayerRequests = Yoo;
         PrayerRequests.push(PRequest);
 
         setPrayers(PrayerRequests);
       });
 
-    firebase
-      .database()
-      .ref(`Requests`)
-      .on("child_removed", snapshot => {
-        let PrayerRequests = Prayers;
-        PrayerRequests = PrayerRequests.filter(
-          note => note.id !== snapshot.key
-        );
-        setPrayers(PrayerRequests);
-      });
+    
   }
 
   if (!Prayers) {

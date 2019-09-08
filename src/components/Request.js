@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as firebase from "firebase";
 import firebaseConfig from "../index.js";
 import Typography from "typography";
+import HeaderBar from "../components/HeaderBar";
 
 import {
   Jumbotron,
@@ -24,7 +25,9 @@ const divStyle = {
     width: "100%",
     backgroundImage: `url(${imgMyimageexample})`,
     backgroundSize: "cover",
-    marginBottom: "8vh"
+    marginBottom: "8vh",
+    color: "#90a4ae",
+    margingTop: 0
   },
   Text: {
     paddingBottom: 20,
@@ -80,36 +83,34 @@ function Request() {
 
   return (
     <div className="App">
-      <div>
-        <Jumbotron fluid style={divStyle.Picture}>
-          <Container>
-            <h1 typography={typography}>Send your Request</h1>
-            <Row className="justify-content-md-center">
-              <Col sm>
-                <InputGroup className="mb-3">
-                  <FormControl
-                    placeholder="Prayer Request..."
-                    aria-describedby="basic-addon2"
-                    as="textarea"
-                    aria-label="With textarea"
-                    value={request}
-                    onChange={evt => onChangeHandler(evt)}
-                    maxLength={256}
-                  />
-                </InputGroup>
-                <Col>
-                  <Button onClick={createNote} variant="primary">
-                    Send
-                  </Button>
-                </Col>
+      <Jumbotron fluid style={divStyle.Picture}>
+        <Container>
+          <h1 typography={typography}>Post Your Quote</h1>
+          <Row className="justify-content-md-center">
+            <Col sm>
+              <InputGroup className="mb-3">
+                <FormControl
+                  placeholder="Prayer Request..."
+                  aria-describedby="basic-addon2"
+                  as="textarea"
+                  aria-label="With textarea"
+                  value={request}
+                  onChange={evt => onChangeHandler(evt)}
+                  maxLength={256}
+                />
+              </InputGroup>
+              <Col>
+                <Button onClick={createNote} variant="primary">
+                  Send
+                </Button>
               </Col>
-            </Row>
-            <p>No hate speech will be tolerated.</p>
+            </Col>
+          </Row>
+          <p>No hate speech will be tolerated.</p>
 
-            <h5>{wordSize}/256</h5>
-          </Container>
-        </Jumbotron>
-      </div>
+          <h5>{wordSize}/256</h5>
+        </Container>
+      </Jumbotron>
     </div>
   );
 }

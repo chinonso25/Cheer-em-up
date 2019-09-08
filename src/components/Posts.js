@@ -33,9 +33,6 @@ function Posts(props) {
 
   useEffect(() => {
     listenforChange();
-    //do stuff
-
-    // Update the document title using the browser API
   }, []);
 
   function listenforChange() {
@@ -50,11 +47,6 @@ function Posts(props) {
           likes: snapshot.child("Likes").numChildren(),
           comments: snapshot.child("Comment").numChildren()
         };
-
-        let PrayerRequests = Prayers;
-        PrayerRequests.push(PRequest);
-        console.log(Prayers);
-
         setPrayers(Prayers => [...Prayers, PRequest]);
       });
   }
