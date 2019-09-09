@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as firebase from "firebase";
-import firebaseConfig from "../index.js";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Prayer from "../pages/Prayer";
 
 import Divider from "../components/Divider";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Bounce } from "react-activity";
 
 const imgMyimageexample = require("../img/Prayer.jpg");
@@ -30,13 +27,12 @@ const divStyle = {
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    padding:10
+    padding: 10
   }
 };
 
 function Comments(props) {
   const [Comments, setComments] = useState([]);
-  const [Likes, SetLikes] = useState(0);
 
   useEffect(() => {
     // Update the document title using the browser API
@@ -62,7 +58,7 @@ function Comments(props) {
     return (
       <>
         <Container style={divStyle.Dots}>
-          <Row className="justify-content-md-center" >
+          <Row className="justify-content-md-center">
             <Col>
               <h2>No Comments</h2>
             </Col>
@@ -90,7 +86,7 @@ function Comments(props) {
               .reverse()
               .map(Request => (
                 <div className="note" key={Request.id}>
-                  <h5>{Request.comment}</h5>
+                  <h3>{Request.comment}</h3>
                   <h6>
                     Posted by {Request.author} on {Request.date}
                   </h6>

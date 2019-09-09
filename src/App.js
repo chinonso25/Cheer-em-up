@@ -7,10 +7,7 @@ import Prayer from "./pages/Prayer";
 import HeaderBar from "./components/HeaderBar";
 import Footer from "./components/Footer";
 
-import {
-  BrowserRouter as Router,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as firebase from "firebase";
 
 function App() {
@@ -19,8 +16,7 @@ function App() {
     firebase.database();
   });
   return (
-    <Router >
-      <div >
+    <Router>
       <HeaderBar />
       <Route path="/" exact component={Home} />
       <Route path="/about" component={About} />
@@ -31,7 +27,6 @@ function App() {
         )}
       />
       <Footer />
-      </div>
     </Router>
   );
 }

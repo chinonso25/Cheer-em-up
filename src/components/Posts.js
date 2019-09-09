@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as firebase from "firebase";
-import firebaseConfig from "../index.js";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import Prayer from "../pages/Prayer";
+import { Link } from "react-router-dom";
 
 import Divider from "../components/Divider";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -36,10 +34,8 @@ const divStyle = {
 
 function Posts(props) {
   const [Prayers, setPrayers] = useState([]);
-  const [Likes, SetLikes] = useState(0);
 
   useEffect(() => {
-    console.log(Prayers);
     listenforChange();
   }, []);
 
@@ -73,11 +69,8 @@ function Posts(props) {
       .once("value")
       .then(function(snapshot) {
         var a = snapshot.numChildren(); // 1 ("name")
-        console.log(a - 2);
-        
       });
-
-    };
+  };
 
   if (Prayers === undefined || Prayers.length == 0) {
     return (
@@ -100,7 +93,7 @@ function Posts(props) {
               .map(Request => (
                 <div className="note" key={Request.id}>
                   <h5>Posted on {Request.date}</h5>
-                  <h1>'{Request.title}'</h1>
+                  <h1>{Request.title}</h1>
                   <Row style={divStyle.BottomRow}>
                     <Button
                       onClick={() => {
@@ -108,7 +101,7 @@ function Posts(props) {
                       }}
                       variant="outline-success"
                     >
-                      Deep... 🤔 {Request.likes}
+                      Cheers 🙌 {Request.likes}
                     </Button>
                     <Button variant="link">
                       <Link to={`/Requests/${Request.id}`}>

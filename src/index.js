@@ -4,18 +4,18 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import * as firebase from "firebase";
-import 'typeface-oxygen'
+import "typeface-oxygen";
 
 require("firebase/auth");
 
 const firebaseConfig = firebase.initializeApp({
-  apiKey: "AIzaSyCFg0pG_kXtd6UmUGiWniopfW7030IbfFI",
-  authDomain: "prayersupport-5107b.firebaseapp.com",
-  databaseURL: "https://prayersupport-5107b.firebaseio.com",
-  projectId: "prayersupport-5107b",
+  apiKey: "AIzaSyCgVoT5jrtxfXTBMxo3cnMkDSN3Yqtdn3g",
+  authDomain: "cheer-em-up.firebaseapp.com",
+  databaseURL: "https://cheer-em-up.firebaseio.com",
+  projectId: "cheer-em-up",
   storageBucket: "",
-  messagingSenderId: "340364043158",
-  appId: "1:340364043158:web:4329166199eac84642f3b7"
+  messagingSenderId: "639144140138",
+  appId: "1:639144140138:web:2213b61e38d3b65ad31913"
 });
 
 // Initialize Firebase

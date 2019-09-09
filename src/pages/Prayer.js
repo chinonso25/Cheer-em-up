@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from "react";
-import HeaderBar from "../components/HeaderBar";
 import * as firebase from "firebase";
 
 import CommentBox from "../components/CommentBox";
 import Comments from "../components/Comments";
 
 import "./About.css";
-import {
-  Jumbotron,
-  Container,
-  InputGroup,
-  FormControl,
-  Button,
-  Navbar,
-  Nav,
-  NavDropdown
-} from "react-bootstrap";
+import { Jumbotron, Container } from "react-bootstrap";
 
 const imgMyimageexample = require("../img/Prayer.jpg");
 const divStyle = {
@@ -30,23 +20,13 @@ const divStyle = {
     color: "#90a4ae"
   },
   Quote: {
-    color: "white"
+    color: "black"
   }
 };
 
 function Prayer(props) {
   const [Prayers, setPrayers] = useState([]);
-  const [Likes, SetLikes] = useState(0);
-  const {
-    text,
-    match: { params },
-    Post
-  } = props;
-
-  const { name } = params;
-
-  console.log(props);
-  console.log(Post);
+  const { Post } = props;
 
   useEffect(() => {
     firebase.database();
@@ -67,7 +47,6 @@ function Prayer(props) {
           likes: snapshot.numChildren() - 2
         };
 
-        console.log(PRequest);
         let PrayerRequests = [];
         PrayerRequests.push(PRequest);
 
@@ -85,10 +64,8 @@ function Prayer(props) {
           date: snapshot.val().date,
           likes: snapshot.child("Likes").numChildren()
         };
-        console.log(PRequest);
 
         setPrayers(PRequest);
-        console.log(Prayers);
       });
   };
 
@@ -96,8 +73,8 @@ function Prayer(props) {
     <>
       <Jumbotron fluid style={divStyle.Picture}>
         <Container style={divStyle.Text}>
-          <h5>Posted on {Prayers.date}</h5>
-          <h1 style={divStyle.Quote}>"{Prayers.title}"</h1>
+          <h5 style={{ color: "black" }}>Posted on {Prayers.date}</h5>
+          <h1 style={divStyle.Quote}>{Prayers.title}</h1>
         </Container>
       </Jumbotron>
       <Comments x={Prayers.id} />

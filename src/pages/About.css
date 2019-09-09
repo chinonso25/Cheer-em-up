@@ -1,13 +1,9 @@
-#containerIntro h1,
+#containerIntro h2,
 #containerIntro p {
-    display: inline;
-    font-family: 'Oxygen';
-    line-height: 28px;
-    
-    
+  font-family: "Oxygen";
+  line-height: 28px;
 }
 
-#containerIntro p{
-    font-weight: 100
+#containerIntro p {
+  font-weight: 100;
 }
-

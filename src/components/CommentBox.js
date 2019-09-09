@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import * as firebase from "firebase";
-import Divider from "../components/Divider";
 import {
-  Jumbotron,
   Container,
   InputGroup,
   FormControl,
   Button,
-  Navbar,
-  Nav,
-  NavDropdown,
   Row
 } from "react-bootstrap";
 
@@ -54,7 +49,6 @@ function CommentBox(props) {
           Date: moment().format("MMMM Do YYYY")
         });
       setMessage("");
-      console.log(props.x);
     }
   };
 

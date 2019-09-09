@@ -22,7 +22,7 @@ function HeaderBar() {
       <Navbar.Brand>
         <Link to="/" style={divStyle.Text}>
           <h4>
-            <i>Cheer Me Up</i>
+            <i>Cheer Em' Up</i>
           </h4>
         </Link>
       </Navbar.Brand>

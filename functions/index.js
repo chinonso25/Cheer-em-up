@@ -24,7 +24,7 @@ exports.moderator = functions.database
         moderatedMessage
       );
       return change.after.ref.update({
-        PrayerRequest: moderatedMessage,
+        PrayerRequest: moderatedMessage
       });
     }
     return null;

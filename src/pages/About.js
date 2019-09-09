@@ -13,13 +13,21 @@ const divStyle = {
   Text: {
     paddingBottom: 20,
     textAlign: "center",
-    color: "#90a4ae"
+    color: "black",
+    fontWeight: "900",
+    fontSize: 72
   },
   definition: {
-    padding: 10
+    paddingTop: 10
   },
   Declaration: {
-    marginBottom:20
+    marginBottom: 10,
+    textAlign: "center"
+  },
+  Questions: {
+    paddingLeft: 30,
+    paddingRight: 30,
+    textAlign: "center"
   }
 };
 
@@ -28,21 +36,45 @@ function About() {
     <>
       <Jumbotron fluid style={divStyle.Picture}>
         <Container style={divStyle.Text}>
-          <h1 style={divStyle.Text}>Cheer Me Up</h1>
-          <h2>What's this all about?</h2>
+          <h1 style={divStyle.Text}>
+            <i>Cheer Em' Up</i>
+          </h1>
         </Container>
       </Jumbotron>
 
       <Container>
-        <div style={divStyle.Declaration} id="containerIntro" >
-          <h1><b>Cheer Me Up</b></h1>
-          <p style={divStyle.definition}><i>definition</i></p>
+        <div style={divStyle.Declaration} id="containerIntro">
+          <h2>
+            <b>Cheer Em' Up</b>
+          </h2>
+          <p style={divStyle.definition}>
+            <i>Anonymous Inspirator</i>
+          </p>
         </div>
-        the best kind of gossip, typically shared between friends. it’s a
-        bonding tool for people of all ages. tea is usually about someone you
-        know, but can also extend to celebrities random internet scandals, etc.
-        ugh I’ve missed so much what’s the tea sis? I heard some tea about
-        Saturday night! what’s the tea with them are they a couple?
+
+        <Row style={{ padding: 30 }}>
+          <h4>
+            Welcome to Cheer Em’ Up, an anonymous community-driven online space
+            dedicated to cheering up anyone in need of some uplifting!
+          </h4>
+        </Row>
+        <Row style={divStyle.Questions}>
+          <p>
+            Ever been at work, home or just anywhere, in dire need of
+            inspiration?
+          </p>
+        </Row>
+        <Row style={divStyle.Questions}>
+          <p>Maybe it’s been a tough day, and you just need encouragement?</p>
+        </Row>
+        <Row style={divStyle.Questions}>
+          <p>Feeling inspired, and want to cheer someone up?</p>
+        </Row>
+        <div style={divStyle.Declaration} id="containerIntro">
+          <h6>
+            <b>Then Welcome...!</b>
+          </h6>
+        </div>
       </Container>
     </>
   );

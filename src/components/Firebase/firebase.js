@@ -1,7 +1,6 @@
 import app from "firebase/app";
 import "firebase/auth";
 
-
 const config = {
   apiKey: "AIzaSyCFg0pG_kXtd6UmUGiWniopfW7030IbfFI",
   authDomain: "prayersupport-5107b.firebaseapp.com",

@@ -31,12 +31,13 @@ const divStyle = {
   },
   Request: {
     textAlign: "center",
-    color: "white",
+    color: "black",
     marginBottom: 30
   },
   BottomRow: {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    color: "black"
   }
 };
 
@@ -46,8 +47,6 @@ function Request() {
 
   useEffect(() => {
     // Update the document title using the browser API
-    var new_username = rug.generate();
-    console.log(new_username);
   }, []);
 
   const onChangeHandler = evt => {
@@ -74,7 +73,9 @@ function Request() {
     <div>
       <Jumbotron fluid style={divStyle.Picture}>
         <Container>
-          <h1 style={divStyle.Request}>Cheer Someone Up</h1>
+          <h1 style={divStyle.Request}>
+            <i>Cheer Someone Up</i>
+          </h1>
           <Row className="justify-content-md-center">
             <Col sm>
               <InputGroup className="mb-3">
