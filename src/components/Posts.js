@@ -58,11 +58,9 @@ function Posts(props) {
     firebase
       .database()
       .ref(`Requests`)
-      .on("child_removed", (snapshot) => {
+      .on("child_removed", () => {
         alert("Why you have to be mean man?");
         window.location.reload();
-
-
       });
 
       firebase
@@ -72,7 +70,6 @@ function Posts(props) {
         
       });
 
-      console.log(GoodMessages)
   }
 
   const Like = (x) => {
