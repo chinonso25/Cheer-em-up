@@ -24,8 +24,8 @@ const divStyle = {
   }
 };
 
-function Prayer(props) {
-  const [Prayers, setPrayers] = useState([]);
+function Feed(props) {
+  const [GoodMessage, setGoodMessage] = useState([]);
   const { Post } = props;
 
   useEffect(() => {
@@ -42,15 +42,15 @@ function Prayer(props) {
       .on("child_added", snapshot => {
         let PRequest = {
           id: snapshot.key,
-          title: snapshot.val().PrayerRequest,
+          title: snapshot.val().GoodMessage,
           date: snapshot.val().date,
           likes: snapshot.numChildren() - 2
         };
 
-        let PrayerRequests = [];
-        PrayerRequests.push(PRequest);
+        let GoodMessages = [];
+        GoodMessages.push(PRequest);
 
-        setPrayers(PrayerRequests);
+        setGoodMessage(GoodMessages);
       });
 
     firebase
@@ -60,12 +60,12 @@ function Prayer(props) {
       .then(function(snapshot) {
         let PRequest = {
           id: snapshot.key,
-          title: snapshot.val().PrayerRequest,
+          title: snapshot.val().GoodMessage,
           date: snapshot.val().date,
           likes: snapshot.child("Likes").numChildren()
         };
 
-        setPrayers(PRequest);
+        setGoodMessage(PRequest);
       });
   };
 
@@ -73,14 +73,14 @@ function Prayer(props) {
     <>
       <Jumbotron fluid style={divStyle.Picture}>
         <Container style={divStyle.Text}>
-          <h5 style={{ color: "black" }}>Posted on {Prayers.date}</h5>
-          <h1 style={divStyle.Quote}>{Prayers.title}</h1>
+          <h5 style={{ color: "black" }}>Posted on {GoodMessage.date}</h5>
+          <h1 style={divStyle.Quote}>{GoodMessage.title}</h1>
         </Container>
       </Jumbotron>
-      <Comments x={Prayers.id} />
-      <CommentBox x={Prayers.id} />
+      <Comments x={GoodMessage.id} />
+      <CommentBox x={GoodMessage.id} />
     </>
   );
 }
 
-export default Prayer;
+export default Feed;

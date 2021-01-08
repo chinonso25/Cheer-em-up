@@ -17,33 +17,43 @@ exports.moderator = functions.database
       console.log("Retrieved message content: ", message);
 
       // Run moderation checks on on the message and moderate if needed.
-      const moderatedMessage = moderateMessage(message.PrayerRequest);
+      const [moderatedMessage, shouldDelete] = moderateMessage(message.GoodMessage);
+
+      if (shouldDelete){
+        console.log(
+          "Message has been moderated. Deleting Record: ",
+          moderatedMessage
+        );
+        return change.after.ref.remove();
+
+      }
 
       // Update the Firebase DB with checked message.
-      console.log(
-        "Message has been moderated. Saving to DB: ",
-        moderatedMessage
-      );
-      return change.after.ref.remove();
+      
     }
     return null;
   });
 
 // Moderates the given message if appropriate.
 function moderateMessage(message) {
+  let del = false
   // Re-capitalize if the user is Shouting.
   if (isShouting(message)) {
     console.log("User is shouting. Fixing sentence case...");
     message = stopShouting(message);
+    del = true
+  
   }
 
   // Moderate if the user uses SwearWords.
   if (containsSwearwords(message)) {
     console.log("User is swearing. moderating...");
     message = moderateSwearwords(message);
+    del = true
+
   }
 
-  return message;
+  return [message , del];
 }
 
 // Returns true if the string contains swearwords.

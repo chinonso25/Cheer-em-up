@@ -33,7 +33,7 @@ const divStyle = {
 };
 
 function Posts(props) {
-  const [Prayers, setPrayers] = useState([]);
+  const [GoodMessages, setGoodMessages] = useState([]);
 
   useEffect(() => {
     listenforChange();
@@ -46,12 +46,12 @@ function Posts(props) {
       .on("child_added", snapshot => {
         let PRequest = {
           id: snapshot.key,
-          title: snapshot.val().PrayerRequest,
+          title: snapshot.val().GoodMessage,
           date: snapshot.val().date,
           likes: snapshot.child("Likes").numChildren(),
           comments: snapshot.child("Comment").numChildren()
         };
-        setPrayers(Prayers => [...Prayers, PRequest]);
+        setGoodMessages(GoodMessages => [...GoodMessages, PRequest]);
       });
   }
 
@@ -72,7 +72,7 @@ function Posts(props) {
       });
   };
 
-  if (Prayers === undefined || Prayers.length == 0) {
+  if (GoodMessages === undefined || GoodMessages.length == 0) {
     return (
       <Container style={divStyle.Dots}>
         <Row className="justify-content-md-center" style={divStyle.Dots}>
@@ -88,7 +88,7 @@ function Posts(props) {
       <Container>
         <Row className="justify-content-md-center">
           <Col>
-            {Prayers.slice(0)
+            {GoodMessages.slice(0)
               .reverse()
               .map(Request => (
                 <div className="note" key={Request.id}>

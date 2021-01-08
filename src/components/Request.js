@@ -61,7 +61,7 @@ function Request() {
         .database()
         .ref(`Requests/`)
         .push({
-          PrayerRequest: request,
+          GoodMessage: request,
           date: moment().format("MMMM Do YYYY")
         });
       setrequest("");

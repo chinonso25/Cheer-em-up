@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 
 import About from "./pages/About";
-import Prayer from "./pages/Prayer";
+import GoodMessage from "./pages/GoodMessage";
 
 import HeaderBar from "./components/HeaderBar";
 import Footer from "./components/Footer";
@@ -24,7 +24,7 @@ function App() {
       <Route
         path="/Requests/:Post"
         render={props => (
-          <Prayer text="Hello, " {...props} Post={props.match.params.Post} />
+          <GoodMessage text="Hello, " {...props} Post={props.match.params.Post} />
         )}
       />
       <Footer />
