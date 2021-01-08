@@ -13,23 +13,23 @@ const divStyle = {
   Picture: {
     width: "100%",
     backgroundImage: `url(${imgMyimageexample})`,
-    backgroundSize: "cover"
+    backgroundSize: "cover",
   },
   Text: {
     paddingBottom: 20,
     textAlign: "center",
-    color: "#90a4ae"
+    color: "#90a4ae",
   },
   BottomRow: {
     display: "flex",
     justifyContent: "space-between",
-    padding: 10
+    padding: 10,
   },
   Dots: {
     alignItems: "center",
     display: "flex",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 };
 
 function Posts(props) {
@@ -40,34 +40,51 @@ function Posts(props) {
   }, []);
 
   function listenforChange() {
+
     firebase
       .database()
       .ref(`Requests`)
-      .on("child_added", snapshot => {
+      .on("child_added", (snapshot) => {
         let PRequest = {
           id: snapshot.key,
           title: snapshot.val().GoodMessage,
           date: snapshot.val().date,
           likes: snapshot.child("Likes").numChildren(),
-          comments: snapshot.child("Comment").numChildren()
+          comments: snapshot.child("Comment").numChildren(),
         };
-        setGoodMessages(GoodMessages => [...GoodMessages, PRequest]);
+        setGoodMessages((GoodMessages) => [...GoodMessages, PRequest]);
       });
-  }
 
-  const Like = x => {
     firebase
       .database()
-      .ref(`/Requests/${x}/Likes`)
-      .push({
-        Like: true
+      .ref(`Requests`)
+      .on("child_removed", (snapshot) => {
+        alert("Why you have to be mean man?");
+        window.location.reload();
+
+
       });
+
+      firebase
+      .database()
+      .ref(`Requests`)
+      .on("child_changed", (snapshot) => {
+        
+      });
+
+      console.log(GoodMessages)
+  }
+
+  const Like = (x) => {
+    firebase.database().ref(`/Requests/${x}/Likes`).push({
+      Like: true,
+    });
 
     firebase
       .database()
       .ref(`/Requests/${x}/Likes`)
       .once("value")
-      .then(function(snapshot) {
+      .then(function (snapshot) {
         var a = snapshot.numChildren(); // 1 ("name")
       });
   };
@@ -90,7 +107,7 @@ function Posts(props) {
           <Col>
             {GoodMessages.slice(0)
               .reverse()
-              .map(Request => (
+              .map((Request) => (
                 <div className="note" key={Request.id}>
                   <h5>Posted on {Request.date}</h5>
                   <h1>{Request.title}</h1>
