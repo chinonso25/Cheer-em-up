@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "prayersupport-5107b"
+    "default": "prayersupport-5107b",
+    "dev": "cheer-em-up"
   }
 }

@@ -10,6 +10,7 @@ exports.moderator = functions.database
   .ref("/Requests/{messageId}")
   .onWrite(change => {
     const message = change.after.val();
+    console.log('New Log')
 
     if (message && !message.sanitized) {
       // Retrieved the message values.
@@ -23,9 +24,7 @@ exports.moderator = functions.database
         "Message has been moderated. Saving to DB: ",
         moderatedMessage
       );
-      return change.after.ref.update({
-        PrayerRequest: moderatedMessage
-      });
+      return change.after.ref.remove();
     }
     return null;
   });
