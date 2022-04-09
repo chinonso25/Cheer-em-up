@@ -6,7 +6,7 @@
     "bootstrap": "^4.3.1",
     "firebase": "^6.5.0",
     "history": "^4.9.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "random-username-generator": "^1.0.4",
     "react": "^16.9.0",
     "react-activity": "^1.2.2",
